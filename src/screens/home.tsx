@@ -1,5 +1,6 @@
-import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/stores";
 
 type WelcomeMsgProp={
     userName:string
@@ -11,10 +12,9 @@ function WelcomeMsg({userName}:WelcomeMsgProp){
 }
 
 export default function Home(){
-    const[isLogin,logOut]=useState(true);
-    const[userName, setUserName]=useState("Sonu");
+    const {userName, isSignedIn}=useSelector((state:RootState)=>state.userData);
     return <View style={styles.container}>
-        {isLogin?<WelcomeMsg userName={userName}/>:<View><Text>Plz SignIn</Text></View>}
+        {isSignedIn?<WelcomeMsg userName={userName}/>:<View><Text>Plz SignIn</Text></View>}
     </View>
 }
 const styles=StyleSheet.create({

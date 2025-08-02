@@ -1,11 +1,13 @@
-import { useState } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import {Button, StyleSheet, View } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { loginAction, logoutAction } from "../store/userAction";
+import { RootState } from "../store/stores";
 
 export default function SignOut(){
-    const[isLogin,logOut]=useState(true);
-    const[userName, setUserName]=useState("Sonu");
+    const {isSignedIn}=useSelector((state:RootState)=>state.userData);
+    const dispatch=useDispatch();
     return <View style={styles.container}>
-        {isLogin?<Button title="SignOut" onPress={()=>{logOut(true)}}/>:<Button title="SIgn In" onPress={()=>logOut(false)}/>}
+        {isSignedIn?<Button title="SignOut" onPress={()=>{dispatch(logoutAction())}}/>:<Button title="signIn" onPress={()=>{dispatch(loginAction())}}/>}
     </View>
 }
 const styles=StyleSheet.create({

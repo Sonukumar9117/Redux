@@ -12,14 +12,14 @@ export const BottomTab = () => {
     return <NavigationContainer>
         <Tab.Navigator>
             <Tab.Screen name="home" component={Home} options={{
-                tabBarIcon: () => <HomeIcon />
+                // tabBarIcon: () => <HomeIcon />
             }} />
-            <Tab.Screen name='signout' component={SignOut} options={{
+             <Tab.Screen name='signout' component={SignOut} options={{
                 
             }} />
             <Tab.Screen name='userInfo' component={UserInfo} options={{
               
-            }} />
+            }} /> 
         </Tab.Navigator>
     </NavigationContainer>
 }
