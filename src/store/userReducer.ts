@@ -4,8 +4,11 @@ const initialState = {
   isSignedIn: true,
   userName: "Sonu Kumar",
 };
-
-export default (state = initialState, { type, payload }) => {
+type ActionType={
+  type:string,
+  payload:any
+}
+export default (state = initialState, { type, payload }:ActionType) => {
   switch (type) {
     case LOGIN:
       return { ...state, isSignedIn: payload };
